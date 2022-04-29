@@ -1,7 +1,32 @@
 import React from "react";
 
 const Home = () => {
-  return <div>This is home</div>;
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-24 my-10">
+        <div>
+          <h1 className="text-5xl font-kanit mb-10">
+            Manager your headphone inventory from our smart manager
+          </h1>
+          <p className="text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
+            maiores voluptates quibusdam illum soluta vero ducimus dolorem
+            quidem labore quaerat, dolore voluptas sed doloremque quisquam non
+            debitis. Accusantium, laboriosam sapiente!
+          </p>
+          <button className="bg-red-600 text-white px-6 py-3 rounded-lg mt-7">
+            Try Now
+          </button>
+        </div>
+        <div>
+          <img
+            src="https://i.ibb.co/0jw9yqz/headphones-mockup-floating-1.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
