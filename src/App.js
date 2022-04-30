@@ -8,6 +8,8 @@ import ManageProduct from "./components/ManageProduct/ManageProduct";
 import { ToastContainer } from "react-toastify";
 import ManageInventory from "./components/ManageInventory/ManageInventory/ManageInventory";
 import AddProduct from "./components/ManageInventory/AddProduct/AddProduct";
+import Login from "./components/Login/Login/Login";
+import Register from "./components/Login/Register/Register";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             path="/add-product"
             element={<AddProduct></AddProduct>}
           ></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/register" element={<Register></Register>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
