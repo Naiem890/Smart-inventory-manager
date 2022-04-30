@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 
 const ManageProduct = () => {
   const id = useParams().id;
   const [productDetails, setProductDetails] = useState({});
+  const { register, handleSubmit, reset } = useForm();
 
   const {
     productName,
@@ -15,11 +18,52 @@ const ManageProduct = () => {
     productSupplier,
   } = productDetails;
 
+  const updateStock = (productStockModifier) => {
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: "PUT", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productStock, productStockModifier }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   useEffect(() => {
     fetch(`http://localhost:5000/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProductDetails(data));
-  }, []);
+  }, [id, productDetails]);
+
+  const handleDelivered = (id) => {
+    // console.log(id);
+
+    if (productStock > 0) {
+      const productStockModifier = -1;
+      updateStock(productStockModifier);
+    } else {
+      toast("Product stock is empty");
+    }
+  };
+
+  const handleRestock = ({ restock }) => {
+    // console.log(restock);
+
+    if (parseInt(restock) > 0) {
+      console.log("boro");
+      const productStockModifier = restock;
+      updateStock(productStockModifier);
+    } else {
+      toast("Please enter a positive number");
+    }
+    reset();
+  };
   return (
     <div className="px-6 xl:px-0">
       <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 shadow-sm border-2 mt-12 rounded-xl">
@@ -49,8 +93,13 @@ const ManageProduct = () => {
               </p>
             </div>
             <div className="flex gap-6  justify-between items-center">
-              <form action="">
-                <input type="number" className="rounded-lg border-slate-300" />
+              <form action="" onSubmit={handleSubmit(handleRestock)}>
+                <input
+                  type="number"
+                  {...register("restock")}
+                  placeholder="Amount"
+                  className="rounded-lg border-slate-300"
+                />
                 <button
                   type="submit"
                   className="inline-flex items-center ml-5 px-7 py-3  mt-7 font-semibold text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -58,7 +107,10 @@ const ManageProduct = () => {
                   Restock
                 </button>
               </form>
-              <button className="inline-flex items-center px-7 py-3  mt-7 font-semibold text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <button
+                onClick={() => handleDelivered(id)}
+                className="inline-flex items-center px-7 py-3  mt-7 font-semibold text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              >
                 Delivered
               </button>
             </div>

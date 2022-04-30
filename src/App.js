@@ -1,9 +1,11 @@
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/shared/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home/Home";
 import Footer from "./components/shared/Footer/Footer";
 import ManageProduct from "./components/ManageProduct/ManageProduct";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
