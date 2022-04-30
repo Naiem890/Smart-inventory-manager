@@ -5,6 +5,27 @@ import ProductRow from "../ProductRow/ProductRow";
 const ManageInventory = () => {
   const { products, setProducts } = useProducts();
 
+  const handleDelete = (id) => {
+    console.log(id);
+
+    const confirm = window.confirm(
+      "Are You Sure? You Want To Delete This Product"
+    );
+    if (confirm) {
+      fetch(`http://localhost:5000/products/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          const remain = products.filter((product) => product._id != id);
+          console.log(remain.length);
+          setProducts(remain);
+        });
+    }
+  };
+
   return (
     <div className="px-6 xl:px-0">
       <div
@@ -18,7 +39,7 @@ const ManageInventory = () => {
           <div className="md:col-span-7">
             <h2 className="text-2xl font-bold">Manage Your Inventory Here</h2>
 
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
+            <div className="relative overflow-x-auto overflow-y-auto h-96 shadow-md sm:rounded-lg mt-6">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
@@ -43,7 +64,7 @@ const ManageInventory = () => {
                   {products.map((product) => (
                     <ProductRow
                       key={product._id}
-                      product={product}
+                      props={{ product, handleDelete }}
                     ></ProductRow>
                   ))}
                 </tbody>

@@ -1,6 +1,8 @@
 import React from "react";
 import { TrashIcon } from "@heroicons/react/solid";
-const ProductRow = ({ product }) => {
+const ProductRow = ({ props }) => {
+  const { product, handleDelete } = props;
+
   const {
     _id: id,
     productName,
@@ -8,10 +10,6 @@ const ProductRow = ({ product }) => {
     productStock,
     productSold,
   } = product;
-
-  const handleDelete = (id) => {
-    console.log(id);
-  };
 
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
