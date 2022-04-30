@@ -7,6 +7,7 @@ import Footer from "./components/shared/Footer/Footer";
 import ManageProduct from "./components/ManageProduct/ManageProduct";
 import { ToastContainer } from "react-toastify";
 import ManageInventory from "./components/ManageInventory/ManageInventory/ManageInventory";
+import AddProduct from "./components/ManageInventory/AddProduct/AddProduct";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
           <Route
             path="/products/:id"
             element={<ManageProduct></ManageProduct>}
+          ></Route>
+          <Route
+            path="/add-product"
+            element={<AddProduct></AddProduct>}
           ></Route>
         </Routes>
       </BrowserRouter>
