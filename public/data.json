@@ -1,0 +1,47 @@
+[
+  {
+    "productName": "Headphone 1",
+    "productDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis enim minima fugit consequatur quisquam. Mollitia distinctio laboriosam unde est pariatur eos officiis laborum magni optiodolor ut quisquam architecto eum quidem deserunt expedita autem accusamus, ea harum dicta, minus consequuntur.",
+    "productImage": "https://i.ibb.co/tq34Y8F/toppng-com-headphone-669x846.png",
+    "productPrice": "200",
+    "productStock": "20",
+    "productSold": "100",
+    "productSupplier": "Mandy Gordon"
+  },
+  {
+    "productName": "Headphone 2",
+    "productDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis enim minima fugit consequatur quisquam. Mollitia distinctio laboriosam unde est pariatur eos officiis laborum magni optiodolor ut quisquam architecto eum quidem deserunt expedita autem accusamus, ea harum dicta, minus consequuntur.",
+    "productImage": "https://i.ibb.co/tq34Y8F/toppng-com-headphone-669x846.png",
+    "productPrice": "200",
+    "productStock": "20",
+    "productSold": "100",
+    "productSupplier": "Roosevelt Patton"
+  },
+  {
+    "productName": "Headphone 3",
+    "productDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis enim minima fugit consequatur quisquam. Mollitia distinctio laboriosam unde est pariatur eos officiis laborum magni optiodolor ut quisquam architecto eum quidem deserunt expedita autem accusamus, ea harum dicta, minus consequuntur.",
+    "productImage": "https://i.ibb.co/tq34Y8F/toppng-com-headphone-669x846.png",
+    "productPrice": "200",
+    "productStock": "20",
+    "productSold": "100",
+    "productSupplier": "Jane Wagner"
+  },
+  {
+    "productName": "Headphone 4",
+    "productDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis enim minima fugit consequatur quisquam. Mollitia distinctio laboriosam unde est pariatur eos officiis laborum magni optiodolor ut quisquam architecto eum quidem deserunt expedita autem accusamus, ea harum dicta, minus consequuntur.",
+    "productImage": "https://i.ibb.co/tq34Y8F/toppng-com-headphone-669x846.png",
+    "productPrice": "200",
+    "productStock": "20",
+    "productSold": "100",
+    "productSupplier": "Kellie Richards"
+  },
+  {
+    "productName": "Headphone 5",
+    "productDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis enim minima fugit consequatur quisquam. Mollitia distinctio laboriosam unde est pariatur eos officiis laborum magni optiodolor ut quisquam architecto eum quidem deserunt expedita autem accusamus, ea harum dicta, minus consequuntur.",
+    "productImage": "https://i.ibb.co/tq34Y8F/toppng-com-headphone-669x846.png",
+    "productPrice": "200",
+    "productStock": "20",
+    "productSold": "100",
+    "productSupplier": "Jane Wagner"
+  }
+]
