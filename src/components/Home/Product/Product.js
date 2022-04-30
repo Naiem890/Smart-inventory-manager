@@ -14,9 +14,13 @@ const Product = ({ product }) => {
 
   return (
     <div>
-      <div className="max-w-sm bg-white rounded-xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <div className="bg-slate-200 m-5 rounded-xl">
-          <img className="rounded-t-lg px-12 py-6" src={productImage} alt="" />
+      <div className="max-w-sm bg-white rounded-xl border  border-gray-200 shadow-sm hover:shadow-xl duration-200 dark:bg-gray-800 dark:border-gray-700">
+        <div className="bg-slate-200 m-5   rounded-xl">
+          <img
+            className="rounded-t-lg mx-auto block py-8   object-cover h-60 "
+            src={productImage}
+            alt=""
+          />
         </div>
         <div className="p-5 pt-0">
           <div>

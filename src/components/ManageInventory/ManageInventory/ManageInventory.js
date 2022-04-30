@@ -21,7 +21,7 @@ const ManageInventory = () => {
         .then((data) => {
           console.log(data);
 
-          const remain = products.filter((product) => product._id != id);
+          const remain = products.filter((product) => product._id !== id);
           console.log(remain.length);
           setProducts(remain);
         });

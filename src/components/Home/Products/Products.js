@@ -11,8 +11,8 @@ const Products = () => {
       <h2 className="text-5xl font-kanit mb-10 capitalize text-center">
         Manage your product
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 gap-x-12">
+        {products.slice(0, 6).map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </div>
