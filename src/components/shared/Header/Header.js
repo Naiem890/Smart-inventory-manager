@@ -64,13 +64,13 @@ function Header() {
               {navMenu.map((navLink) => {
                 return (
                   <li className="" key={navLink.linkText}>
-                    <a
-                      href={navLink.linkRoute}
+                    <Link
+                      to={navLink.linkRoute}
                       className=" delay-50 cursor-pointer transition-all ease-in block  py-2 px-4 hover:bg-blue-500 hover:text-white bg-blue-100 rounded md:bg-transparent md:text-base dark:text-white"
                       aria-current="page"
                     >
                       {navLink.linkText}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}

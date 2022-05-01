@@ -10,6 +10,7 @@ import ManageInventory from "./components/ManageInventory/ManageInventory/Manage
 import AddProduct from "./components/ManageInventory/AddProduct/AddProduct";
 import Login from "./components/Login/Login/Login";
 import Register from "./components/Login/Register/Register";
+import Blog from "./components/Blog/Blog";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
+          <Route path="/blog" element={<Blog></Blog>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
