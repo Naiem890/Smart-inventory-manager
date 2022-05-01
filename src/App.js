@@ -14,31 +14,26 @@ import Blog from "./components/Blog/Blog";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route
-            path="/manage-inventory"
-            element={<ManageInventory></ManageInventory>}
-          ></Route>
-          <Route
-            path="/products/:id"
-            element={<ManageProduct></ManageProduct>}
-          ></Route>
-          <Route
-            path="/add-product"
-            element={<AddProduct></AddProduct>}
-          ></Route>
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/register" element={<Register></Register>}></Route>
-          <Route path="/blog" element={<Blog></Blog>}></Route>
-        </Routes>
-        <Footer></Footer>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Header></Header>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/manage-inventory"
+          element={<ManageInventory></ManageInventory>}
+        ></Route>
+        <Route
+          path="/products/:id"
+          element={<ManageProduct></ManageProduct>}
+        ></Route>
+        <Route path="/add-product" element={<AddProduct></AddProduct>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/blog" element={<Blog></Blog>}></Route>
+      </Routes>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
-    </div>
+    </BrowserRouter>
   );
 }
 

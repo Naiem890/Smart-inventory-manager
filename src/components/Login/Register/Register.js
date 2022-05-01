@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import registerImage from "../../../image/register.svg";
@@ -6,18 +6,21 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [termCheck, setTermCheck] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
   let regStatus;
 
   const navigate = useNavigate();
-  const handleRegister = (user) => {
+
+  const handleRegister = async (user) => {
     const { email, password } = user;
 
     console.log(email, password);
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    reset();
   };
   if (loading) {
     regStatus = <p className="text-green-700">Creating User...</p>;
@@ -26,12 +29,25 @@ const Register = () => {
   if (error) {
     regStatus = <p className="text-red-700">Error: {error?.message}</p>;
   }
-  const handleCheckbox = () => {
+
+  /* const handleCheckbox = () => {
     setTermCheck(!termCheck);
   };
+  useEffect(handleCheckbox, []); */
 
+  if (user && !user?.user?.emailVerified) {
+    regStatus = (
+      <div className="flex justify-between items-center">
+        <p className="text-green-700">Please check your email and verify</p>
+        <Link to="/login" className="text-blue-500">
+          Go to login
+        </Link>
+      </div>
+    );
+  }
   if (user) {
-    navigate("/");
+    console.log(user);
+    // navigate("/login");
   }
   return (
     <div className="px-6 xl:px-0">
@@ -65,10 +81,9 @@ const Register = () => {
                     type="name"
                     name="name"
                     id="name"
-                    {...register("name")}
+                    {...register("name", { required: true })}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder="Full name"
-                    required=""
                   />
                 </div>
                 <div>
@@ -82,10 +97,9 @@ const Register = () => {
                     type="email"
                     name="email"
                     id="email"
-                    {...register("email")}
+                    {...register("email", { required: true })}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder="example@email.com"
-                    required=""
                   />
                 </div>
                 <div>
@@ -107,10 +121,9 @@ const Register = () => {
                     type="password"
                     name="password"
                     id="password"
-                    {...register("password")}
+                    {...register("password", { required: true })}
                     placeholder="••••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required=""
                   />
                 </div>
                 <div className="flex items-start">
@@ -120,9 +133,8 @@ const Register = () => {
                         id="terms-condition"
                         type="checkbox"
                         checked={termCheck}
-                        onChange={handleCheckbox}
+                        onChange={() => setTermCheck(!termCheck)}
                         className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                        required=""
                       />
                     </div>
                     <label

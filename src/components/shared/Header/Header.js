@@ -1,5 +1,8 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 
 function Header() {
   const navMenu = [
@@ -7,6 +10,11 @@ function Header() {
     { linkText: "Blog", linkRoute: "/blog" },
     { linkText: "About Me", linkRoute: "/about" },
   ];
+
+  const [user] = useAuthState(auth);
+
+  console.log(user?.emailVerified);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav className="bg-white sticky top-0  border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
@@ -76,20 +84,37 @@ function Header() {
               })}
             </ul>
             <div className="flex gap-2 items-center">
-              <Link
-                type="button"
-                to="/login"
-                className="text-blue-600 border-2 border-blue-600 hover:text-white hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Login
-              </Link>
-              <Link
-                type="button"
-                to="/register"
-                className="text-green-600 border-2 border-green-600 hover:text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-              >
-                Register
-              </Link>
+              {!user || !user.emailVerified ? (
+                <>
+                  <Link
+                    type="button"
+                    to="/login"
+                    className="text-blue-600 border-2 border-blue-600 hover:text-white hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    type="button"
+                    to="/register"
+                    className="text-green-600 border-2 border-green-600 hover:text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                  >
+                    Register
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log("Clicked");
+                      signOut(auth);
+                    }}
+                    className="text-blue-600 border-2 border-blue-600 hover:text-white hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Sign Out
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
