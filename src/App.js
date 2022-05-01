@@ -14,8 +14,8 @@ import Register from "./components/Login/Register/Register";
 function App() {
   return (
     <div>
-      <Header></Header>
       <BrowserRouter>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route
@@ -33,8 +33,8 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
-      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

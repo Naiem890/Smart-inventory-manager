@@ -69,7 +69,7 @@ const Login = () => {
                     href="#"
                     class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
                   >
-                    Lost Password?
+                    Forget Password?
                   </a>
                 </div>
                 <button
@@ -79,10 +79,10 @@ const Login = () => {
                   Login to your account
                 </button>
                 <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                  Not registered?{" "}
+                  Not registered?
                   <a
                     href="#"
-                    class="text-blue-700 hover:underline dark:text-blue-500"
+                    class="text-blue-700 hover:underline ml-1 dark:text-blue-500"
                   >
                     Create account
                   </a>
