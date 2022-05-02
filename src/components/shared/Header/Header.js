@@ -13,7 +13,8 @@ function Header() {
 
   const [user] = useAuthState(auth);
 
-  console.log(user?.emailVerified);
+  // console.log(user?.providerId === "firebase", user?.emailVerified);
+  console.log(!user?.emailVerified && user?.providerId === "firebase");
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +85,8 @@ function Header() {
               })}
             </ul>
             <div className="flex gap-2 items-center">
-              {!user || !user.emailVerified ? (
+              {!user ||
+              (!user?.emailVerified && !user?.providerId === "firebase") ? (
                 <>
                   <Link
                     type="button"
@@ -106,10 +108,9 @@ function Header() {
                   <button
                     type="button"
                     onClick={() => {
-                      console.log("Clicked");
                       signOut(auth);
                     }}
-                    className="text-blue-600 border-2 border-blue-600 hover:text-white hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-red-600 border-2 border-red-600 hover:text-white hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                   >
                     Sign Out
                   </button>

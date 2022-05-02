@@ -2,9 +2,10 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import loginImage from "../../../image/login.svg";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -14,25 +15,20 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = (user) => {
+  const handleLogin = async (user) => {
     const { email, password } = user;
-    // console.log(user);
-    signInWithEmailAndPassword(email, password);
-    // console.log("login hyse");
-    // reset();
+    await signInWithEmailAndPassword(email, password);
+    reset();
   };
-  // console.log(user);
 
   let loginStatus;
 
   if (user && !user?.user?.emailVerified) {
-    // console.log(user);
     loginStatus = (
       <p className="text-red-700">First verify your email then try again</p>
     );
     signOut(auth);
     console.log(user.user.emailVerified);
-    // reset();
   } else {
     // navigate("/");
   }
@@ -42,6 +38,11 @@ const Login = () => {
 
   if (error) {
     loginStatus = <p className="text-red-700">Error: {error?.message}</p>;
+  }
+
+  if (user) {
+    console.log(user.providerId);
+    console.log(user);
   }
 
   return (
@@ -142,29 +143,7 @@ const Login = () => {
                     Create Account
                   </Link>
                 </div>
-                <div>
-                  <div className="my-4 flex justify-center items-center">
-                    <div className="border-t-2 border-slate-200 flex-shrink-0 flex-1"></div>
-                    <p className="text-center bg-white mx-4 text-gray-400">
-                      Or
-                    </p>
-                    <div className="border-t-2 border-slate-200 flex-shrink-0 flex-1"></div>
-                  </div>
-                  <div className="flex gap-4 justify-between items-center">
-                    <button
-                      type="submit"
-                      className="w-full text-green-500 rounded-full border-2 border-green-500 hover:text-white hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium   px-5 py-2.5 text-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
-                    >
-                      Google Sign In
-                    </button>
-                    <button
-                      type="submit"
-                      className="w-full text-gray-800 rounded-full border-2 border-gray-800 hover:text-white hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium   px-5 py-2.5 text-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
-                    >
-                      Github Sign In
-                    </button>
-                  </div>
-                </div>
+                <SocialLogin></SocialLogin>
               </form>
             </div>
           </div>

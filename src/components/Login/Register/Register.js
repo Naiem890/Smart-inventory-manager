@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import registerImage from "../../../image/register.svg";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -36,6 +38,7 @@ const Register = () => {
   useEffect(handleCheckbox, []); */
 
   if (user && !user?.user?.emailVerified) {
+    signOut(auth);
     regStatus = (
       <div className="flex justify-between items-center">
         <p className="text-green-700">Please check your email and verify</p>
@@ -168,29 +171,7 @@ const Register = () => {
                     Login Here
                   </Link>
                 </div>
-                <div>
-                  <div className="my-4 flex justify-center items-center">
-                    <div className="border-t-2 border-slate-200 flex-shrink-0 flex-1"></div>
-                    <p className="text-center bg-white mx-4 text-gray-400">
-                      Or
-                    </p>
-                    <div className="border-t-2 border-slate-200 flex-shrink-0 flex-1"></div>
-                  </div>
-                  <div className="flex gap-4 justify-between items-center">
-                    <button
-                      type="submit"
-                      className="w-full text-green-500 rounded-full border-2 border-green-500 hover:text-white hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium   px-5 py-2.5 text-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
-                    >
-                      Google Sign Up
-                    </button>
-                    <button
-                      type="submit"
-                      className="w-full text-gray-800 rounded-full border-2 border-gray-800 hover:text-white hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium   px-5 py-2.5 text-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
-                    >
-                      Github Sign Up
-                    </button>
-                  </div>
-                </div>
+                <SocialLogin></SocialLogin>
               </form>
             </div>
           </div>
