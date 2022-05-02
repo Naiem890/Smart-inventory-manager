@@ -14,7 +14,7 @@ const ManageInventory = () => {
       "Are You Sure? You Want To Delete This Product"
     );
     if (confirm) {
-      fetch(`http://localhost:5000/products/${id}`, {
+      fetch(`http://localhost:5000/product/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

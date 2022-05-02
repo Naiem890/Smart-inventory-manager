@@ -1,11 +1,12 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import loginImage from "../../../image/login.svg";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -17,6 +18,8 @@ const Login = () => {
   const location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
+
+  const [email, setEmail] = useState("");
 
   const handleLogin = async (user) => {
     const { email, password } = user;
@@ -95,12 +98,12 @@ const Login = () => {
                     >
                       Your password
                     </label>
-                    {/* <a
-                      href="/"
-                      className="ml-auto text-sm text-red-700 hover:underline dark:text-blue-500"
+                    <Link
+                      to="/reset-password"
+                      className="ml-auto text-sm text-red-700 hover:underline cursor-pointer dark:text-blue-500"
                     >
                       Forget Password?
-                    </a> */}
+                    </Link>
                   </div>
                   <input
                     type="password"

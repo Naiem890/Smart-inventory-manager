@@ -23,11 +23,11 @@ const ProductRow = ({ props }) => {
       <td className="px-6 text-green-400 py-2">{productSold}</td>
       <td className="px-6 py-2">${productPrice}</td>
       <td className="px-6 py-2 text-right">
-        <div className="rounded-full bg-red-200 p-2 cursor-pointer h-8 w-8">
-          <TrashIcon
-            onClick={() => handleDelete(id)}
-            className=" text-red-500"
-          ></TrashIcon>
+        <div
+          onClick={() => handleDelete(id)}
+          className="rounded-full bg-red-200 p-2 cursor-pointer h-8 w-8"
+        >
+          <TrashIcon className=" text-red-500"></TrashIcon>
         </div>
       </td>
     </tr>

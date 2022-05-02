@@ -3,6 +3,8 @@ import React from "react";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import addProductImage from "../../../image/add-product.svg";
+import auth from "../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const AddProduct = () => {
   const {
@@ -12,10 +14,14 @@ const AddProduct = () => {
     reset,
   } = useForm();
 
+  const [user] = useAuthState(auth);
+
   const onSubmit = (newProduct) => {
+    newProduct.uid = user.providerData[0].uid;
+    // console.log(user.providerData[0].uid);
     console.log(newProduct);
 
-    fetch("http://localhost:5000/products/add", {
+    fetch("http://localhost:5000/product/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
