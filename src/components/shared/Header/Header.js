@@ -17,8 +17,8 @@ function Header() {
   console.log(!user?.emailVerified && user?.providerId === "firebase");
 
   return (
-    <div className="max-w-7xl mx-auto sticky top-0 z-50 px-4 sm:px-6 lg:px-8">
-      <nav className="bg-white  border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
+    <div className="bg-white  sticky top-0 z-50 ">
+      <nav className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="https://flowbite.com" className="flex items-center">
             <img
@@ -105,6 +105,27 @@ function Header() {
                 </>
               ) : (
                 <>
+                  <Link
+                    to="/manage-inventory"
+                    className=" delay-50 cursor-pointer border-2 rounded-md border-orange-500 transition-all ease-in block text-orange-600  py-2 px-4 hover:bg-orange-500 hover:text-white  md:bg-transparent md:text-base dark:text-white"
+                    aria-current="page"
+                  >
+                    Manage Items
+                  </Link>
+                  <Link
+                    to="/my-items"
+                    className=" delay-50 cursor-pointer border-2 rounded-md border-indigo-500 transition-all ease-in block text-indigo-600  py-2 px-4 hover:bg-indigo-500 hover:text-white  md:bg-transparent md:text-base dark:text-white"
+                    aria-current="page"
+                  >
+                    My Items
+                  </Link>
+                  <Link
+                    to="/add-product"
+                    className=" delay-50 cursor-pointer border-2 rounded-md border-green-500 transition-all ease-in block text-green-500  py-2 px-4 hover:bg-green-500 hover:text-white  md:bg-transparent md:text-base dark:text-white"
+                    aria-current="page"
+                  >
+                    Add Item
+                  </Link>
                   <button
                     type="button"
                     onClick={() => {
