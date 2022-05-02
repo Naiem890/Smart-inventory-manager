@@ -17,8 +17,8 @@ function Header() {
   console.log(!user?.emailVerified && user?.providerId === "firebase");
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav className="bg-white sticky top-0  border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
+    <div className="max-w-7xl mx-auto sticky top-0 z-50 px-4 sm:px-6 lg:px-8">
+      <nav className="bg-white  border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="https://flowbite.com" className="flex items-center">
             <img

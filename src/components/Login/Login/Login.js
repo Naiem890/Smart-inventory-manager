@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import loginImage from "../../../image/login.svg";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -14,6 +14,9 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = async (user) => {
     const { email, password } = user;
@@ -40,9 +43,10 @@ const Login = () => {
     loginStatus = <p className="text-red-700">Error: {error?.message}</p>;
   }
 
-  if (user) {
-    console.log(user.providerId);
-    console.log(user);
+  if (user && user?.user?.emailVerified) {
+    // console.log(user.providerId);
+    // console.log(user);
+    navigate(from, { replace: true });
   }
 
   return (

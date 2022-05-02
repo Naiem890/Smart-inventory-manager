@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { signOut } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import registerImage from "../../../image/register.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
@@ -15,7 +15,10 @@ const Register = () => {
 
   let regStatus;
 
-  const navigate = useNavigate();
+  /* const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/login"; */
 
   const handleRegister = async (user) => {
     const { email, password } = user;
@@ -50,11 +53,13 @@ const Register = () => {
   }
   if (user) {
     console.log(user);
+    // navigate(from, { replace: true });
+
     // navigate("/login");
   }
   return (
     <div className="px-6 xl:px-0">
-      <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8  mt-8 rounded-xl">
+      <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8  mt-2 rounded-xl">
         <div className="grid grid-cols-12 ">
           <div className=" mt-4 p-5 max-w-lg rounded-lg col-span-6">
             <img className=" " src={registerImage} alt="" />
@@ -158,7 +163,7 @@ const Register = () => {
                 <button
                   disabled={!termCheck}
                   type="submit"
-                  className="w-full disabled:bg-gray-500 disabled:cursor-not-allowed text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-600"
+                  className="w-full disabled:bg-gray-500  disabled:cursor-not-allowed text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-600"
                 >
                   Create your account
                 </button>

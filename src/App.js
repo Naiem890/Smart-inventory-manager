@@ -11,6 +11,7 @@ import AddProduct from "./components/ManageInventory/AddProduct/AddProduct";
 import Login from "./components/Login/Login/Login";
 import Register from "./components/Login/Register/Register";
 import Blog from "./components/Blog/Blog";
+import RequireAuth from "./components/Login/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -20,13 +21,28 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route
           path="/manage-inventory"
-          element={<ManageInventory></ManageInventory>}
+          element={
+            <RequireAuth>
+              <ManageInventory></ManageInventory>
+            </RequireAuth>
+          }
         ></Route>
         <Route
           path="/products/:id"
-          element={<ManageProduct></ManageProduct>}
+          element={
+            <RequireAuth>
+              <ManageProduct></ManageProduct>
+            </RequireAuth>
+          }
         ></Route>
-        <Route path="/add-product" element={<AddProduct></AddProduct>}></Route>
+        <Route
+          path="/add-product"
+          element={
+            <RequireAuth>
+              <AddProduct></AddProduct>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>

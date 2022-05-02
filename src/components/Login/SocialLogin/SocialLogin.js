@@ -3,14 +3,18 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 const SocialLogin = () => {
   let buttonName;
   let errorMessage;
 
+  const navigate = useNavigate();
   const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
   //   console.log(location.pathname);
 
   if (location.pathname === "/login") {
@@ -35,6 +39,7 @@ const SocialLogin = () => {
 
   if (user || user1) {
     errorMessage = "";
+    navigate(from, { replace: true });
   }
 
   return (
