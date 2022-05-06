@@ -20,16 +20,16 @@ function Header() {
     <div className="bg-white  sticky top-0 z-50 ">
       <nav className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <a href="https://flowbite.com" className="flex items-center">
-            <img
+          <Link to="/" className="flex items-center">
+            {/* <img
               src="/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
+              alt=" Logo"
+            /> */}
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              S-Inventory
             </span>
-          </a>
+          </Link>
           <div className="flex">
             <button
               data-collapse-toggle="mobile-menu-4"
