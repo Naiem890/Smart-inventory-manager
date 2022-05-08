@@ -4,7 +4,7 @@ import aboutImage from "../../../image/about.svg";
 const About = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2   items-center lg:gap-24 md:gap-10 gap-16 md:my-20 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2   items-center lg:gap-24 md:gap-10 gap-16 md:my-14 my-10">
         <div className="order-2 -mt-8 md:mt-0">
           <h3 className="lg:text-5xl md:text-5xl text-4xl font-kanit mb-6 capitalize">
             <div className="text-green-500">It's not just a software.</div> One
