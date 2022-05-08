@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 
@@ -7,6 +7,8 @@ const ManageProduct = () => {
   const id = useParams().id;
   const [productDetails, setProductDetails] = useState({});
   const { register, handleSubmit, reset } = useForm();
+
+  const [disable, setDisable] = useState(false);
 
   const {
     productName,
@@ -18,13 +20,20 @@ const ManageProduct = () => {
     productSupplier,
   } = productDetails;
 
-  const updateStock = (productStockModifier) => {
-    fetch(`https://lit-sands-09202.herokuapp.com/product/${id}`, {
+  const updateStock = async (productSoldModifier, productStockModifier) => {
+    setDisable(true);
+
+    await fetch(`https://lit-sands-09202.herokuapp.com/product/${id}`, {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ productStock, productStockModifier }),
+      body: JSON.stringify({
+        productSold,
+        productSoldModifier,
+        productStock,
+        productStockModifier,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -41,30 +50,34 @@ const ManageProduct = () => {
       .then((data) => setProductDetails(data));
   }, [id, productDetails]);
 
-  const handleDelivered = (id) => {
+  const handleDelivered = async (id) => {
     // console.log(id);
 
     if (productStock > 0) {
       const productStockModifier = -1;
-      updateStock(productStockModifier);
+      const productSoldModifier = 1;
+      await updateStock(productSoldModifier, productStockModifier);
       toast("One Item Delivered");
     } else {
       toast("Product stock is empty");
     }
+    setDisable(false);
   };
 
   const handleRestock = ({ restock }) => {
     // console.log(restock);
 
     if (parseInt(restock) > 0) {
-      console.log("boro");
       const productStockModifier = restock;
-      updateStock(productStockModifier);
+      const productSoldModifier = 0;
+
+      updateStock(productSoldModifier, productStockModifier);
       toast(`${restock} Item Restocked`);
     } else {
       toast("Please enter a positive number");
     }
     reset();
+    setDisable(false);
   };
   return (
     <div className="px-6 xl:px-0">
@@ -110,14 +123,23 @@ const ManageProduct = () => {
                 </button>
               </form>
               <button
+                disabled={disable}
                 onClick={() => handleDelivered(id)}
-                className="inline-flex items-center px-7 py-3  mt-7 font-semibold text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                className="inline-flex items-center px-7 py-3  mt-7 disabled:bg-gray-400  disabled:cursor-not-allowed font-semibold text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 disable"
               >
                 Delivered
               </button>
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center">
+        <Link
+          to="/manage-inventory"
+          className="inline-flex mx-auto items-center px-7 py-3  mt-7 font-semibold text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+        >
+          Manage Inventory
+        </Link>
       </div>
     </div>
   );

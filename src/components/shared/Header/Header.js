@@ -18,7 +18,7 @@ function Header() {
   return (
     <div className="bg-white  sticky top-0 z-50 ">
       <nav className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-gray-200 px-2 sm:px-4 py-3 rounded dark:bg-gray-800">
-        <div className="container flex flex-wrap justify-between items-center mx-auto">
+        <div className=" px-3 flex flex-wrap justify-between items-center mx-auto">
           <Link to="/" className="flex items-center">
             {/* <img
               src="/docs/images/logo.svg"
@@ -86,7 +86,7 @@ function Header() {
                 );
               })}
             </ul>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center flex-wrap">
               {!user ||
               (!user?.emailVerified && !user?.providerId === "firebase") ? (
                 <>

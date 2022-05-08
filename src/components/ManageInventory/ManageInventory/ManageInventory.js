@@ -50,10 +50,10 @@ const ManageInventory = () => {
               </Link>
             </div>
             <div className="relative overflow-x-auto overflow-y-auto h-96 shadow-md sm:rounded-lg mt-6">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-full  text-sm text-left table-auto text-gray-500 dark:text-gray-400">
+                <thead className="text-xs sticky top-0 text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                    <th scope="col" className="px-6 py-5">
+                    <th scope="col" className="px-6 w-2/5 break-words py-5">
                       Product name
                     </th>
                     <th scope="col" className="px-6 text-blue-600 py-5">
