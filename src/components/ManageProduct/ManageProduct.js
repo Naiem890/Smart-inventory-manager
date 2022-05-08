@@ -19,7 +19,7 @@ const ManageProduct = () => {
   } = productDetails;
 
   const updateStock = (productStockModifier) => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://lit-sands-09202.herokuapp.com/product/${id}`, {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const ManageProduct = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://lit-sands-09202.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProductDetails(data));
   }, [id, productDetails]);

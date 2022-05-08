@@ -20,7 +20,9 @@ const ManageMyItem = () => {
 
   useEffect(() => {
     console.log(user.providerData[0].uid);
-    fetch(`http://localhost:5000/products/${user.providerData[0].uid}`)
+    fetch(
+      `https://lit-sands-09202.herokuapp.com/products/${user.providerData[0].uid}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -32,7 +34,7 @@ const ManageMyItem = () => {
       "Are You Sure? You Want To Delete This Product"
     );
     if (confirm) {
-      fetch(`http://localhost:5000/product/delete/${id}`, {
+      fetch(`https://lit-sands-09202.herokuapp.com/product/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

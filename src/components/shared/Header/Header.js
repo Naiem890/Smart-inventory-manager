@@ -8,7 +8,6 @@ function Header() {
   const navMenu = [
     { linkText: "Home", linkRoute: "/" },
     { linkText: "Blog", linkRoute: "/blog" },
-    { linkText: "About Me", linkRoute: "/about" },
   ];
 
   const [user] = useAuthState(auth);
@@ -27,7 +26,10 @@ function Header() {
               alt=" Logo"
             /> */}
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              S-Inventory
+              <span className="bg-green-500 px-2 py-1 rounded-md text-white">
+                S
+              </span>{" "}
+              Inventory
             </span>
           </Link>
           <div className="flex">

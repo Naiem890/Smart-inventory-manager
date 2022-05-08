@@ -21,7 +21,7 @@ const AddProduct = () => {
     // console.log(user.providerData[0].uid);
     console.log(newProduct);
 
-    fetch("http://localhost:5000/product/add", {
+    fetch("https://lit-sands-09202.herokuapp.com/product/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
