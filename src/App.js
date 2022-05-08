@@ -14,6 +14,7 @@ import Blog from "./components/Blog/Blog";
 import RequireAuth from "./components/Login/RequireAuth/RequireAuth";
 import ManageMyItem from "./components/ManageMyItem/ManageMyItem";
 import ResetPassword from "./components/Login/ResetPassword/ResetPassword";
+import NotFound from "./components/shared/NotFound/NotFound";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         ></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer></ToastContainer>
