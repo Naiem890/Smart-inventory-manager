@@ -31,16 +31,18 @@ const ManageInventory = () => {
   return (
     <div className="px-6 xl:px-0">
       <div
-        className="max-w-7xl bg-white mx-auto p-4 sm:p-6 lg:p-8 shadow-sm border-2 mt-12
+        className="max-w-7xl bg-white mx-auto p-4 sm:p-6 lg:p-8 shadow-sm border-2 mt-6 md:mt-12
       rounded-xl"
       >
-        <div className="grid grid-cols-12 gap-9">
-          <div className="max-w-md rounded-lg md:col-span-5">
+        <div className="grid grid-cols-7 gap-0 lg:gap-9">
+          <div className="max-w-md rounded-lg col-span-full  md:col-span-3">
             <img className="px-10 py-4" src={manageProductImage} alt="" />
           </div>
-          <div className="md:col-span-7">
+          <div className=" col-span-full md:col-span-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold">Manage Your Inventory Here</h2>
+              <h2 className="md:text-2xl text-xl font-bold">
+                Manage Your Inventory Here
+              </h2>
               <Link
                 to="/add-product"
                 className="inline-flex items-center px-7 py-3   font-semibold text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"

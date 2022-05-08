@@ -52,14 +52,14 @@ const ManageMyItem = () => {
     <div>
       <div className="px-6 xl:px-0">
         <div
-          className="max-w-7xl bg-white mx-auto p-4 sm:p-6 lg:p-8 shadow-sm border-2 mt-12
+          className="max-w-7xl bg-white mx-auto p-4 sm:p-6 lg:p-8 shadow-sm border-2 mt-6 md:mt-12
       rounded-xl"
         >
-          <div className="grid grid-cols-12 gap-9">
-            <div className="max-w-md rounded-lg md:col-span-5">
+          <div className="grid grid-cols-7 gap-9">
+            <div className="max-w-md rounded-lg col-span-full  md:col-span-4">
               <img className="px-10 py-4" src={manageProductImage} alt="" />
             </div>
-            <div className="md:col-span-7">
+            <div className="col-span-full md:col-span-3">
               <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold">
                   Hello,{" "}
