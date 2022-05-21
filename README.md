@@ -4,8 +4,9 @@ This is a smart shop management website made with `React`, `Firebase`, `React` `
 
 ## [Live Link](https://smart-shop-manager.firebaseapp.com/)
 
-[https://smart-shop-manager.firebaseapp.com/](https://smart-shop-manager.firebaseapp.com/)
-[Server Code/](https://github.com/Naiem890/smart-inventory-server)
+##### [https://smart-shop-manager.firebaseapp.com/](https://smart-shop-manager.firebaseapp.com/)
+
+##### [Server Code/](https://github.com/Naiem890/smart-inventory-server)
 
 ## Website Description
 
