@@ -2,6 +2,15 @@
 
 This is a smart shop management website made with `React`, `Firebase`, `React` `Router`, `Node`, `Express`, `Mongodb`
 
+Getting Started
+
+```
+  git clone https://github.com/Naiem890/Smart-inventory-manager.git PROJECT_NAME
+  cd PROJECT_NAME
+  npm install
+  npm start
+```
+
 ## [Live Link](https://smart-shop-manager.firebaseapp.com/)
 
 ##### [https://smart-shop-manager.firebaseapp.com/](https://smart-shop-manager.firebaseapp.com/)
